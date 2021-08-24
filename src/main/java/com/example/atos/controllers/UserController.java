@@ -3,11 +3,13 @@ package com.example.atos.controllers;
 import com.example.atos.api.UserApi;
 import com.example.atos.dto.UserDto;
 import com.example.atos.exceptions.AtosException;
+import com.example.atos.helpers.DateHelper;
 import com.example.atos.mappers.GenericMapper;
 import com.example.atos.models.User;
 import com.example.atos.services.UserService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -20,6 +22,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController implements UserApi {
 
     private final UserService userService;
+
+    @Value("${adult.age.french}")
+    private int adultAge;
 
     @Autowired
     public UserController(UserService userService) {
@@ -57,6 +62,7 @@ public class UserController implements UserApi {
         return userDto != null &&
                 StringUtils.isNotBlank(userDto.getUsername()) &&
                 userDto.getBirthdate() != null &&
-                StringUtils.isNotBlank(userDto.getCountry());
+                StringUtils.isNotBlank(userDto.getCountry()) &&
+                DateHelper.computeYears(userDto.getBirthdate()) >= adultAge;
     }
 }

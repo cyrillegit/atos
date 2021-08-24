@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Getter
@@ -30,7 +31,7 @@ public class User implements Serializable {
     private String username;
 
     @Column(name = BIRTHDATE_COLUMN, nullable = false)
-    private Date birthdate;
+    private LocalDate birthdate;
 
     @Column(name = COUNTRY_COLUMN, nullable = false)
     private String country;

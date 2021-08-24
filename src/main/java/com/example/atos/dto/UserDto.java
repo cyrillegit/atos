@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Getter
@@ -18,7 +19,7 @@ public class UserDto {
 
     private String username;
 
-    private Date birthdate;
+    private LocalDate birthdate;
 
     private String country;
 
