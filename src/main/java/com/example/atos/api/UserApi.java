@@ -1,5 +1,6 @@
 package com.example.atos.api;
 
+import com.example.atos.dto.ResultDto;
 import com.example.atos.dto.UserDto;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +16,7 @@ public interface UserApi {
      * @return registered user
      */
     @PostMapping
-    ResponseEntity<UserDto> registerUser(UserDto userDto);
+    ResponseEntity<ResultDto> registerUser(UserDto userDto);
 
     /**
      * get details of a user by its id
@@ -23,6 +24,6 @@ public interface UserApi {
      * @return details of the user
      */
     @GetMapping(value = "/{id}")
-    ResponseEntity<UserDto> displayUser(Integer id);
+    ResponseEntity<ResultDto> displayUser(Integer id);
 
 }

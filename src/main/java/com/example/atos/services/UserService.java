@@ -17,5 +17,5 @@ public interface UserService {
      * @param id of the user
      * @return the user with the corresponding id
      */
-    User display(Integer id);
+    User display(Integer id) throws AtosException;
 }

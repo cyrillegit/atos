@@ -29,7 +29,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User display(Integer id) {
-        return userRepository.findById(id).orElse(null);
+    public User display(Integer id) throws AtosException {
+        Optional<User> user =  userRepository.findById(id);
+        if (!user.isPresent()){
+            throw new AtosException("User does not exist");
+        }
+        return user.get();
     }
 }
