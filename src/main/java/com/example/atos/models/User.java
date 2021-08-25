@@ -1,15 +1,18 @@
 package com.example.atos.models;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = User.TABLE_NAME)
 public class User implements Serializable {
@@ -30,7 +33,7 @@ public class User implements Serializable {
     private String username;
 
     @Column(name = BIRTHDATE_COLUMN, nullable = false)
-    private Date birthdate;
+    private LocalDate birthdate;
 
     @Column(name = COUNTRY_COLUMN, nullable = false)
     private String country;
